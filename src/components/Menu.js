@@ -28,7 +28,7 @@ const Menu = () => {
     return (
         <div className='menu-container'>
             <div className='menu-header'>
-                <h2>This weeks specials!</h2>
+                <h4>This weeks specials!</h4>
                 <button>Order Menu</button>
             </div>
 
@@ -38,7 +38,7 @@ const Menu = () => {
                         <img src={recipe.image} alt=''/>
                         <div className='menu-content'>
                             <div className='heading'>
-                                <h5>{recipe.title}</h5>
+                                <h3>{recipe.title}</h3>
                                 <p>${recipe.price}</p>
                             </div>
                             <p>{recipe.description}</p>

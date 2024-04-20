@@ -1,10 +1,10 @@
-import React, { useReducer } from "react";
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import Header from './Header';
-import Booking from './Booking';
+import { useReducer } from "react";
+import BookingForm from "../components/BookingForm";
+import Footer from "../components/Footer";
+import Nav from "../components/Nav";
+import { useNavigate } from "react-router-dom";
 
-const Main = () => {
-
+export default function Booking(){
     const seedRandom = function(seed){
         var m = 2**35 - 31;
         var a = 185852;
@@ -12,7 +12,8 @@ const Main = () => {
         return function(){
             return (s = s * a % m) /m;
         }
-    }   
+    }  
+    
 
     const fetchAPI = function(date){
         let result = [];
@@ -41,19 +42,21 @@ const Main = () => {
 
     const navigate = useNavigate();
     function submitForm (formData){
-        if(submitAPI(formData)){
-            navigate("/confirmed")
-        }
+        console.log('ss')
+        // if(submitAPI(formData)){
+        //     navigate("/confirmed")
+        // }
     }
 
-    return (
-        <main>
-            <Routes>
-                <Route path='/' element={<Header/>}/>
-                <Route path='/booking' element={<Booking availableTimes={state.availableTimes} dispatch={dispatch} submitForm={submitForm}/>}/>
-            </Routes>
-        </main>
-    );
-};
 
-export default Main;
+    const handleSubmit = (e) => {
+        navigate("/confirmed")
+    }
+
+    return <>
+         <Nav />
+        <BookingForm
+            availableTimes={state.availableTimes} dispatch={dispatch} submitForm={handleSubmit}/>
+        <Footer />
+    </>
+}
